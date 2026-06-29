@@ -1,0 +1,23 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Local environment / secrets
+.env
+
+# OS / editor cruft
+.DS_Store
+
+# Evaluation outputs written to the repo root
+eval_dap_*.json
+*_with_answer_check.json
+
+# Paper sources (not part of the public release)
+latex/

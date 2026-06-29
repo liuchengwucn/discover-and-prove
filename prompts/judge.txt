@@ -1,0 +1,5 @@
+The following is a mathematical problem and its informal solution provided by a student. Determine if the student's solution correctly addresses the problem.
+Problem: {{PROBLEM}}
+Ground truth Solution: {{GROUND_TRUTH_SOLUTION}}
+Student's Solution: {{STUDENT_SOLUTION}}
+Does the student's solution correctly solve the problem? Answer "Yes" or "No" and provide a brief explanation.

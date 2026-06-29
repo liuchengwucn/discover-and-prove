@@ -1,0 +1,78 @@
+You are an expert AI assistant specializing in Formal Mathematics with the Lean 4 proof assistant. Your task is to perform a specific and targeted code modification.
+
+You will be given three inputs:
+1.  A natural language math problem (`<NATURAL_LANGUAGE_PROBLEM>`).
+2.  A detailed natural language solution to that problem (`<NATURAL_LANGUAGE_SOLUTION>`).
+3.  A Lean 4 code statement that formalizes the problem (`<LEAN4_STATEMENT>`).
+
+The Lean 4 statement contains a "fill-in-the-blank" definition for the solution, typically an `abbrev` or `def` with `sorry` as its value.
+
+**Your task is to:**
+
+1.  **Read the `<NATURAL_LANGUAGE_SOLUTION>` to find the final answer** to the problem. The answer is usually explicitly stated at the end (e.g., "The value is π/2", "The result is 42").
+2.  **Locate the `abbrev` or `def` line** in the `<LEAN4_STATEMENT>` that defines the solution variable (e.g., `abbrev my_solution : ℝ := sorry`).
+3.  **Replace the `sorry`** in that definition with the final answer you extracted. Ensure the syntax is correct for Lean 4 (e.g., `π` becomes `Real.pi`).
+4.  **Output the entire Lean 4 code block with this single modification.** Do not change any other part of the code. Specifically, the `theorem`'s proof, which is also `sorry`, must remain unchanged.
+
+**Example:**
+
+**<NATURAL_LANGUAGE_PROBLEM>:**
+Evaluate the integral \[\int_0^1 \frac{1}{1+x^2} \,dx.\]
+
+**<NATURAL_LANGUAGE_SOLUTION>:**
+The problem is to evaluate the definite integral of \(f(x) = \frac{1}{1+x^2}\) from \(0\) to \(1\).
+
+The antiderivative of \(\frac{1}{1+x^2}\) is \(\arctan(x)\).
+Using the Fundamental Theorem of Calculus, we have:
+\[
+\int_0^1 \frac{1}{1+x^2} \,dx = [\arctan(x)]_0^1
+\]
+\[
+= \arctan(1) - \arctan(0)
+\]
+Since \(\arctan(1) = \pi/4\) and \(\arctan(0) = 0\), the value of the integral is:
+\[
+\frac{\pi}{4} - 0 = \frac{\pi}{4}.
+\]
+The final answer is \(\pi/4\).
+
+**<LEAN4_STATEMENT>:**
+```lean
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.Arctan
+
+open Set
+
+abbrev integral_value : ℝ := sorry
+
+theorem integral_example
+  : ∫ x in Icc 0 1, 1 / (1 + x^2) = integral_value :=
+sorry
+```
+
+**Expected Output:**
+```lean
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.Arctan
+
+open Set
+
+abbrev integral_value : ℝ := Real.pi / 4
+
+theorem integral_example
+  : ∫ x in Icc 0 1, 1 / (1 + x^2) = integral_value :=
+sorry
+```
+
+---
+
+Now, perform the task for the following inputs.
+
+**<NATURAL_LANGUAGE_PROBLEM>:**
+{{NATURAL_LANGUAGE_PROBLEM}}
+
+**<NATURAL_LANGUAGE_SOLUTION>:**
+{{NATURAL_LANGUAGE_SOLUTION}}
+
+**<LEAN4_STATEMENT>:**
+```lean
+{{LEAN4_STATEMENT}}
+```

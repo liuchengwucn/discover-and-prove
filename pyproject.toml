@@ -1,0 +1,23 @@
+[project]
+name = "discover-and-prove"
+version = "0.1.0"
+description = "Hard Mode automated theorem proving in Lean 4: discover the answer in natural language, then prove it formally (DAP, ACL 2026)."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [{ name = "Chengwu Liu" }]
+dependencies = [
+    "httpx[socks]>=0.28.1",
+    "kimina-client>=0.2.1",
+    "openai>=2.6.0",
+    # pygments is a runtime import of kimina-client that it does not declare.
+    "pygments>=2.0",
+    "python-dotenv>=1.1.1",
+    "tenacity>=9.1.2",
+    "tqdm>=4.67.1",
+]
+
+[project.urls]
+Paper = "https://aclanthology.org/2026.acl-long.3/"
+Repository = "https://github.com/liuchengwucn/discover-and-prove"
+Dataset = "https://huggingface.co/datasets/liuchengwu/discover-and-prove"
